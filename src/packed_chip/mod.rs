@@ -39,7 +39,7 @@ const MAX_BIT_LENGTH: usize = 13;
 
 /// The size of the remaining (fixed size) limb. Special care is needed if it is
 /// also a max size limb
-const LAST_FIXED_LIMB_LENGTH: usize = if KECCAK_LANE_SIZE % MAX_BIT_LENGTH == 0 {
+const LAST_FIXED_LIMB_LENGTH: usize = if KECCAK_LANE_SIZE.is_multiple_of(MAX_BIT_LENGTH) {
     MAX_BIT_LENGTH
 } else {
     KECCAK_LANE_SIZE % MAX_BIT_LENGTH
@@ -49,7 +49,7 @@ const LAST_FIXED_LIMB_LENGTH: usize = if KECCAK_LANE_SIZE % MAX_BIT_LENGTH == 0 
 /// less
 const NUM_FULL_LIMBS: usize = KECCAK_LANE_SIZE / MAX_BIT_LENGTH
     - 1
-    - if KECCAK_LANE_SIZE % MAX_BIT_LENGTH == 0 {
+    - if KECCAK_LANE_SIZE.is_multiple_of(MAX_BIT_LENGTH) {
         1
     } else {
         0
@@ -348,7 +348,7 @@ impl<F: PrimeField> PackedChip<F> {
     pub fn new(config: &PackedConfig) -> Self {
         // Assert field size is at least 192 bits
         assert!(F::NUM_BITS > 192);
-         
+
         Self {
             config: config.clone(),
             _marker: PhantomData,
@@ -650,7 +650,8 @@ impl<F: PrimeField> Keccackf1600Instructions<F> for PackedChip<F> {
         // the number of rows is
         // - 4 rows per absorbed lane to absorb the input lanes
         //   (4*17*num_absorbed_blocks)
-        // - KECCAK_ROWS_PER_PERMUTATION for each permutation (KECCAK_ROWS_PER_PERMUTATION * num_absorbed_blocks)
+        // - KECCAK_ROWS_PER_PERMUTATION for each permutation
+        //   (KECCAK_ROWS_PER_PERMUTATION * num_absorbed_blocks)
         // - 4 rows per squeezed lane (16)
         let nr_rows_log_f = num_absorbed_blocks
             * (KECCAK_ROWS_PER_PERMUTATION + 4 * KECCAK_ABSORB_LANES)

@@ -10,7 +10,7 @@ use midnight_proofs::{
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 
-use crate::packed_chip::{PackedChip, PackedConfig, MAX_BIT_LENGTH, NUM_LIMBS};
+use crate::packed_chip::{PackedChip, PackedConfig, NUM_LIMBS};
 enum ShouldFail {
     // circuit is honestly generated
     No,
@@ -131,8 +131,6 @@ impl<F: PrimeField> Circuit<F> for TestLC<F> {
 
 #[test]
 fn test_lc_constraints() {
-    let k = MAX_BIT_LENGTH as u32 + 1;
-
     let number_of_inputs = 10;
 
     // test a few random inputs

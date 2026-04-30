@@ -1,4 +1,4 @@
-#![allow(clippy::doc_lazy_continuation)]
+#![allow(clippy::doc_lazy_continuation, clippy::doc_overindented_list_items)]
 //! Module with helper functions for implementing rotations.
 //!
 //! Given the word size |W| = [`KECCAK_LANE_SIZE`] and the maximum lookup bit

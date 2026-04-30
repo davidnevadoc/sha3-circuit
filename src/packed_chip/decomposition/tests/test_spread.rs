@@ -219,8 +219,6 @@ mod spread_from_u64 {
 
     #[test]
     fn test_spread_limb_ranges() {
-        let k = MAX_BIT_LENGTH as u32 + 1;
-
         let number_of_inputs = 10;
 
         // test a few random inputs
@@ -282,8 +280,6 @@ mod spread_from_u64 {
 
     #[test]
     fn test_spread_decomposition() {
-        let k = MAX_BIT_LENGTH as u32 + 1;
-
         let number_of_inputs = 10;
 
         // test a few random inputs

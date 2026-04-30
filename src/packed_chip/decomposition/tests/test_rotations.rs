@@ -15,7 +15,7 @@ use crate::{
     packed_chip::{
         decomposition::rotation::{get_dense_limb_coefficients, lane_limbs},
         utils::SpreadBits,
-        PackedChip, PackedConfig, MAX_BIT_LENGTH,
+        PackedChip, PackedConfig,
     },
 };
 
@@ -106,8 +106,6 @@ impl<F: PrimeField> Circuit<F> for TestRotationCircuit<F> {
 
 #[test]
 fn test_rotations_next_row() {
-    let k = MAX_BIT_LENGTH as u32 + 1;
-
     let number_of_inputs = 10;
 
     // test a few random inputs

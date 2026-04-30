@@ -11,7 +11,6 @@ use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use sha3::{Digest, Keccak256 as Keccak256Cpu, Sha3_256 as Sha3_256_CPU};
 use sha3_circuit::{
-    instructions::Keccackf1600Instructions,
     packed_chip::{PackedChip, PackedConfig},
     sha3_256_gadget::{Keccak256, Sha3_256},
 };
@@ -145,8 +144,6 @@ fn test_preimage(mode: HashMode) {
             hash_mode: mode,
             _marker: PhantomData,
         };
-
-        let k = PackedChip::<Fp>::min_k(preimage.len());
 
         let prover = match MockProver::run(&circuit, vec![digest.clone()]) {
             Ok(prover) => prover,
