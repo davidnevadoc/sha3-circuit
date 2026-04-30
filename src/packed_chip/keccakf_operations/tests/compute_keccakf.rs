@@ -59,7 +59,7 @@ impl<F: PrimeField> Circuit<F> for TestComputeKeccakf<F> {
 
         // first we assign the input state
         let state = &self.input;
-        let states = packed_chip.assign_states(&mut layouter, &[state.clone()])?;
+        let states = packed_chip.assign_states(&mut layouter, std::slice::from_ref(state))?;
         let initial = states[0].clone();
 
         // compute the keccakf in different regions
@@ -80,7 +80,6 @@ impl<F: PrimeField> Circuit<F> for TestComputeKeccakf<F> {
 #[test]
 fn test_compute_keccakf() {
     let repetitions = 15;
-    let k = 16;
 
     // random initial state
     let mut rng = ChaCha8Rng::from_entropy();
@@ -109,7 +108,7 @@ fn test_compute_keccakf() {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![expected]) {
+    let prover = match MockProver::run(&circuit, vec![expected]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

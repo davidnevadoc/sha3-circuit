@@ -1,7 +1,7 @@
 [package]
 name = "sha3-circuit"
 authors = ["Alexandros Zacharakis"]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Lookup based midnight-proofs (halo2 fork) implementation of keccak-f[1600] permutation and gadgets for the sha3-256 and keccak-256 hash functions."
 readme = "README.md"
@@ -10,8 +10,8 @@ categories = ["cryptography"]
 keywords = ["proofs", "zkp", "zkSNARKs", "sha3", "keccak"]
 
 [dependencies]
-midnight-curves = "0.2.0"
-midnight-proofs = { version = "0.7.0", default-features = false, features = [
+midnight-curves = "0.3.0"
+midnight-proofs = { version = "0.8.0", default-features = false, features = [
     "circuit-params",
     "committed-instances",
 ] }
@@ -28,3 +28,4 @@ sha3 = "0.10.0"
 [[bench]]
 name = "sha3_preimage"
 harness = false
+

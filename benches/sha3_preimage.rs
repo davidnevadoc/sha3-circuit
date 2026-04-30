@@ -132,11 +132,11 @@ fn criterion_benchmark(c: &mut Criterion) {
         create_proof::<Fr, KZGCommitmentScheme<Bls12>, CircuitTranscript<blake2b_simd::State>, _>(
             params,
             pk,
-            &[circuit.clone()],
+            std::slice::from_ref(&circuit),
             0,
             &[&[]],
-            rng,
             &mut transcript,
+            rng,
         )
         .expect("proof generation should not fail");
         transcript.finalize()

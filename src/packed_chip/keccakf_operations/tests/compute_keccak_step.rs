@@ -13,7 +13,7 @@ use rand_chacha::ChaCha8Rng;
 use super::{compute_chi, compute_iota, compute_rho, compute_theta, KeccakState};
 use crate::{
     constants::{KECCAK_NUM_LANES, KECCAK_WIDTH},
-    packed_chip::{utils::SpreadBits, PackedChip, PackedConfig, MAX_BIT_LENGTH},
+    packed_chip::{utils::SpreadBits, PackedChip, PackedConfig},
 };
 
 /// enum that defines which step we test
@@ -98,8 +98,6 @@ impl<F: PrimeField> Circuit<F> for TestComputeStep<F> {
 }
 
 fn test_compute_step(step: KeccakStep) {
-    let k = MAX_BIT_LENGTH as u32 + 1;
-
     let number_of_inputs = 25;
 
     // sample random inputs
@@ -144,7 +142,7 @@ fn test_compute_step(step: KeccakStep) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![expected_state]) {
+    let prover = match MockProver::run(&circuit, vec![expected_state]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

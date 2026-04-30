@@ -10,7 +10,7 @@ use midnight_proofs::{
 use rand::{RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 
-use crate::packed_chip::{utils::SpreadBits, PackedChip, PackedConfig, MAX_BIT_LENGTH};
+use crate::packed_chip::{utils::SpreadBits, PackedChip, PackedConfig};
 
 // converts spread lanes to dense bytes
 #[derive(Debug)]
@@ -100,8 +100,6 @@ impl<F: PrimeField> Circuit<F> for TestLaneToBytesCircuit<F> {
 
 #[test]
 fn test_spread_lane_to_bytes() {
-    let k = MAX_BIT_LENGTH as u32 + 1;
-
     let number_of_inputs = 10;
 
     // test a few random inputs
@@ -121,7 +119,7 @@ fn test_spread_lane_to_bytes() {
         .map(Fp::from)
         .collect::<Vec<_>>();
 
-    let prover = match MockProver::run(k, &circuit, vec![expected]) {
+    let prover = match MockProver::run(&circuit, vec![expected]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

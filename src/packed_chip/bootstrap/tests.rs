@@ -11,7 +11,7 @@ use rand::{RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 
 use crate::packed_chip::{
-    bootstrap::assign_bootstrap::BPart, utils::SpreadBits, PackedChip, PackedConfig, MAX_BIT_LENGTH,
+    bootstrap::assign_bootstrap::BPart, utils::SpreadBits, PackedChip, PackedConfig,
 };
 
 mod test_bootstrap_gate {
@@ -132,8 +132,6 @@ mod test_bootstrap_gate {
     }
 
     fn test_bootstrap_gate_helper<const E: usize>() {
-        let k = MAX_BIT_LENGTH as u32 + 1;
-
         let number_of_inputs = 10;
 
         // test a few random inputs
@@ -148,7 +146,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -167,7 +165,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -186,7 +184,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -301,8 +299,6 @@ mod test_bootstrap_assignment {
     }
 
     fn test_bootstrap_helper<const E: usize>() {
-        let k = MAX_BIT_LENGTH as u32 + 1;
-
         let number_of_inputs = 15;
         let xor_size = match E {
             // maximum number of XORs in two rows
@@ -330,7 +326,7 @@ mod test_bootstrap_assignment {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![results]) {
+        let prover = match MockProver::run(&circuit, vec![results]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };

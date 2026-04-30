@@ -10,7 +10,7 @@ use midnight_proofs::{
 use rand::{Rng, RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 
-use crate::packed_chip::{utils::SpreadBits, PackedChip, PackedConfig, MAX_BIT_LENGTH};
+use crate::packed_chip::{utils::SpreadBits, PackedChip, PackedConfig};
 
 enum ShouldFail {
     // circuit is honestly generated
@@ -179,8 +179,6 @@ impl<F: PrimeField> Circuit<F> for TestAuxGateCircuit<F> {
 }
 
 fn test_gate_helper(gate: Gate) {
-    let k = MAX_BIT_LENGTH as u32 + 1;
-
     let number_of_inputs = 10;
 
     // test a few random inputs
@@ -199,7 +197,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -223,7 +221,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -240,7 +238,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
