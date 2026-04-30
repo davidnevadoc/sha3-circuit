@@ -535,7 +535,8 @@ checksum = "f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273"
 [[package]]
 name = "midnight-curves"
 version = "0.3.0"
-source = "git+https://github.com/midnightntwrk/midnight-zk?branch=iquerejeta%2Fv2#657aacba8d7f34d6d676193f6c99d1591b99c07b"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "30489f54343b238003dcb58809e7c1ebdd7283494b9d0f54c0a565a6aa3abe5d"
 dependencies = [
  "bitvec",
  "blst",
@@ -564,7 +565,8 @@ dependencies = [
 [[package]]
 name = "midnight-proofs"
 version = "0.8.0"
-source = "git+https://github.com/midnightntwrk/midnight-zk?branch=iquerejeta%2Fv2#657aacba8d7f34d6d676193f6c99d1591b99c07b"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "742c98d17c83c48aa2705e0da29b9758f47252af2fc78f6369bb070ba490af0f"
 dependencies = [
  "blake2b_simd",
  "ff",
@@ -966,7 +968,7 @@ dependencies = [
 
 [[package]]
 name = "sha3-circuit"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "blake2b_simd",
  "criterion",
