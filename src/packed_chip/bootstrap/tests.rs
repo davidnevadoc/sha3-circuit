@@ -148,7 +148,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -167,7 +167,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -186,7 +186,7 @@ mod test_bootstrap_gate {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -330,7 +330,7 @@ mod test_bootstrap_assignment {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![results]) {
+        let prover = match MockProver::run(&circuit, vec![results]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };

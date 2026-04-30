@@ -144,7 +144,7 @@ fn test_compute_step(step: KeccakStep) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![expected_state]) {
+    let prover = match MockProver::run(&circuit, vec![expected_state]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

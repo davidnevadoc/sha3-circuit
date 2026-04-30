@@ -236,7 +236,7 @@ mod spread_from_u64 {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![]) {
+        let prover = match MockProver::run(&circuit, vec![]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };
@@ -251,7 +251,7 @@ mod spread_from_u64 {
                 should_fail: ShouldFail::LimbOutOfBound(i, j),
                 _marker: PhantomData,
             };
-            let prover = match MockProver::run(k, &circuit, vec![]) {
+            let prover = match MockProver::run(&circuit, vec![]) {
                 Ok(prover) => prover,
                 Err(e) => panic!("{e:#?}"),
             };
@@ -272,7 +272,7 @@ mod spread_from_u64 {
                 should_fail: ShouldFail::UseBigLimb(i, j),
                 _marker: PhantomData,
             };
-            let prover = match MockProver::run(k, &circuit, vec![]) {
+            let prover = match MockProver::run(&circuit, vec![]) {
                 Ok(prover) => prover,
                 Err(e) => panic!("{e:#?}"),
             };
@@ -309,7 +309,7 @@ mod spread_from_u64 {
             _marker: PhantomData,
         };
 
-        let prover = match MockProver::run(k, &circuit, vec![results, rot_results]) {
+        let prover = match MockProver::run(&circuit, vec![results, rot_results]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };

@@ -161,8 +161,8 @@ fn prover(
         &[circuit.clone()],
         0,
         &[&[pi.as_slice()]],
-        rng,
         &mut transcript,
+        rng,
     )
     .expect("proof generation should not fail");
     transcript.finalize()

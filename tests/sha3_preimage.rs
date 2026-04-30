@@ -148,7 +148,7 @@ fn test_preimage(mode: HashMode) {
 
         let k = PackedChip::<Fp>::min_k(preimage.len());
 
-        let prover = match MockProver::run(k, &circuit, vec![digest.clone()]) {
+        let prover = match MockProver::run(&circuit, vec![digest.clone()]) {
             Ok(prover) => prover,
             Err(e) => panic!("{e:#?}"),
         };

@@ -121,7 +121,7 @@ fn test_spread_lane_to_bytes() {
         .map(Fp::from)
         .collect::<Vec<_>>();
 
-    let prover = match MockProver::run(k, &circuit, vec![expected]) {
+    let prover = match MockProver::run(&circuit, vec![expected]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

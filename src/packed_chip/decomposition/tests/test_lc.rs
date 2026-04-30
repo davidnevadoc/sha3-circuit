@@ -151,7 +151,7 @@ fn test_lc_constraints() {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -166,7 +166,7 @@ fn test_lc_constraints() {
         should_fail: ShouldFail::BadLimb(bad_input, bad_col),
         _marker: PhantomData,
     };
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -179,7 +179,7 @@ fn test_lc_constraints() {
         should_fail: ShouldFail::BadResult(bad_input),
         _marker: PhantomData,
     };
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

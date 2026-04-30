@@ -10,8 +10,8 @@ categories = ["cryptography"]
 keywords = ["proofs", "zkp", "zkSNARKs", "sha3", "keccak"]
 
 [dependencies]
-midnight-curves = "0.2.0"
-midnight-proofs = { version = "0.7.0", default-features = false, features = [
+midnight-curves = "0.3.0"
+midnight-proofs = { version = "0.8.0", default-features = false, features = [
     "circuit-params",
     "committed-instances",
 ] }
@@ -28,3 +28,7 @@ sha3 = "0.10.0"
 [[bench]]
 name = "sha3_preimage"
 harness = false
+
+[patch.crates-io]
+midnight-curves = { git = "https://github.com/midnightntwrk/midnight-zk", branch = "iquerejeta/v2" }
+midnight-proofs = { git = "https://github.com/midnightntwrk/midnight-zk", branch = "iquerejeta/v2" }

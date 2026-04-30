@@ -123,7 +123,7 @@ fn test_rotations_next_row() {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -137,7 +137,7 @@ fn test_rotations_next_row() {
         should_fail: ShouldFail::UseBadResult(i),
         _marker: PhantomData,
     };
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };

@@ -199,7 +199,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -223,7 +223,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
@@ -240,7 +240,7 @@ fn test_gate_helper(gate: Gate) {
         _marker: PhantomData,
     };
 
-    let prover = match MockProver::run(k, &circuit, vec![]) {
+    let prover = match MockProver::run(&circuit, vec![]) {
         Ok(prover) => prover,
         Err(e) => panic!("{e:#?}"),
     };
