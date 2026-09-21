@@ -10,11 +10,12 @@ categories = ["cryptography"]
 keywords = ["proofs", "zkp", "zkSNARKs", "sha3", "keccak"]
 
 [dependencies]
-midnight-curves = "0.2.0"
-midnight-proofs = { git = "https://github.com/midnightntwrk/midnight-zk", branch = "main", default-features = false, features = [
-    "circuit-params",
-    "committed-instances",
-] }
+midnight-curves = "0.3.0"
+midnight-proofs = "0.8.0"
+# midnight-proofs = { git = "https://github.com/midnightntwrk/midnight-zk", branch = "nev/mmr-api-v2", default-features = false, features = [
+#     "circuit-params",
+#     "committed-instances",
+# ] }
 num-bigint = { version = "0.4" }
 rand = "0.8"
 blake2b_simd = "1.0.3"
